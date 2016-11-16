@@ -1,6 +1,9 @@
 # double_pinyin_mspy.custom.yaml
 
 patch:
+  translator:
+    dictionary: luna_pinyin.extended
+    
   switches:                  
     - name: ascii_mode
       reset: 0               

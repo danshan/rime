@@ -1,6 +1,6 @@
 patch:
   show_notifications_via_notification_center: true
-  show_notifications_when: appropriate
+  show_notifications_when: appropriate  # 状态通知，适当(appropriate)，开（always）关（never）
 
   style:
     color_scheme: apathy 
@@ -16,29 +16,22 @@ patch:
       inline_preedit: true # 单行模式
       #candidate_format: "%c\u2005%@\u2005" # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间。
 
-      corner_radius: 5
+      corner_radius: 5 #候选条圆角
       border_height: 0
       border_width: 0
-      back_color: 0xFFFFFF
+      back_color: 0xFFFFFF #候选条圆角
 
-      font_face: "PingFangSC-Regular,H-SiuNiu"
+      #font_face: "Lucida Grande"
+      font_face: "PingFangSC-Regular,H-SiuNiu"  #候选词字体
         # 我的系统简中字体已设定为冬青黑体；
         # 此处设定西文字体让它自动回退，以免候选词里的西文用中文字体显示。
-      font_point: 16
-      text_color: 0x424242
+      font_point: 16  #候选字词大小
+      text_color: 0x424242  #高亮选中词颜色
 
+      #label_font_face: "Lucida Grande"
+      label_font_face: "PingFangSC-Light"   #候选词编号字体
+      label_font_point: 12   #候选编号大小
+      
+      hilited_candidate_text_color: 0xEE6E00  #候选文字颜色
+      hilited_candidate_back_color: 0xFFFFEF  #候选文字背景色
       comment_text_color: 0x999999  #拼音等提示文字颜色
-
-      label_font_face: "PingFangSC-Light"
-      label_font_point: 12
-      # label_color: 0xDDDDDD
-        # label_color 这个属性当前有 bug；
-        # 每当开启「方案选单」，
-        # 它就会被 text_color 和 back_color 的中和色替换掉。
-
-      hilited_candidate_text_color: 0xEE6E00
-      hilited_candidate_back_color: 0xFFFFFF
-        # 令高亮候选词的背景色与候选条背景色 back_color 一致
-      # hilited_candidate_label_color: 0xEE6E00
-        # 问题同 label_color
-

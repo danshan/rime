@@ -7,6 +7,7 @@
 支持如下特性: 
 
 1\. 使用微软双拼作为常用中文输入法.
+2\. 禁用全角半角切换功能, 只保留半角输入.
 
 输入法外观和特性的几个文件：
 
@@ -29,6 +30,56 @@
 2\. 修改输入法外观 squirrel.custom.yaml
 3\. 修改输入方案配置文件，例如：明月拼音·简化字，需要修改 luna_pinyin_simp.custom.yaml ，输入方案配置文件像是一个接口文件，模糊拼音、加载扩充词库、定义一些特殊符号的直接上屏、定义个性化的翻页按键等都在这个文件里。
 
+### default.custom.yaml
+
+我平时用的中文输入法是微软双拼, 所以也只保留这一种输入法即可.
+另外, 对于一个开发人员, 我不希望任何情况会 (哪怕是不小心) 切换成全角输入, 所以我强制禁用了切换全角半角的快捷键.
+
+由于 key_binder.bindings 是一个数组, 所以必须把完整的数据结构加进去.
+
+```yaml
+patch:
+  schema_list:
+    - schema: double_pinyin_mspy
+
+  key_binder:
+    bindings:
+      # Emacs style
+      - { when: composing, accept: Control+p, send: Up }
+      - { when: composing, accept: Control+n, send: Down }
+      - { when: composing, accept: Control+b, send: Left }
+      - { when: composing, accept: Control+f, send: Right }
+      - { when: composing, accept: Control+a, send: Home }
+      - { when: composing, accept: Control+e, send: End }
+      - { when: composing, accept: Control+d, send: Delete }
+      - { when: composing, accept: Control+k, send: Shift+Delete }
+      - { when: composing, accept: Control+h, send: BackSpace }
+      - { when: composing, accept: Control+g, send: Escape }
+      - { when: composing, accept: Control+bracketleft, send: Escape }
+      - { when: composing, accept: Alt+v, send: Page_Up }
+      - { when: composing, accept: Control+v, send: Page_Down }
+      # paging keys
+      - { when: composing, accept: ISO_Left_Tab, send: Page_Up }
+      - { when: composing, accept: Shift+Tab, send: Page_Up }
+      - { when: composing, accept: Tab, send: Page_Down }
+      - { when: has_menu, accept: minus, send: Page_Up }
+      - { when: has_menu, accept: equal, send: Page_Down }
+      - { when: paging, accept: comma, send: Page_Up }
+      - { when: has_menu, accept: period, send: Page_Down }
+      # hotkey switch
+      - { when: always, accept: Control+Shift+1, select: .next }
+      - { when: always, accept: Control+Shift+2, toggle: ascii_mode }
+      # - { when: always, accept: Control+Shift+3, toggle: full_shape }
+      - { when: always, accept: Control+Shift+4, toggle: simplification }
+      - { when: always, accept: Control+Shift+5, toggle: extended_charset }
+      - { when: always, accept: Control+Shift+exclam, select: .next }
+      - { when: always, accept: Control+Shift+at, toggle: ascii_mode }
+      # - { when: always, accept: Control+Shift+numbersign, toggle: full_shape }
+      - { when: always, accept: Control+Shift+dollar, toggle: simplification }
+      - { when: always, accept: Control+Shift+percent, toggle: extended_charset }
+      # - { when: always, accept: Shift+space, toggle: full_shape }
+      - { when: always, accept: Control+period, toggle: ascii_punct }
+```
 
 ### squirrel.custom.yaml
 
@@ -74,3 +125,4 @@ patch:
       hilited_candidate_back_color: 0xFFFFEF  #候选文字背景色
       comment_text_color: 0x999999  #拼音等提示文字颜色
 ```
+
