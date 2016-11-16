@@ -21,7 +21,7 @@ patch:
       border_width: 0
       back_color: 0xFFFFFF
 
-      font_face: "Lucida Grande"
+      font_face: "PingFangSC-Regular,H-SiuNiu"
         # 我的系统简中字体已设定为冬青黑体；
         # 此处设定西文字体让它自动回退，以免候选词里的西文用中文字体显示。
       font_point: 16
@@ -29,7 +29,7 @@ patch:
 
       comment_text_color: 0x999999  #拼音等提示文字颜色
 
-      label_font_face: "Lucida Grande"
+      label_font_face: "PingFangSC-Light"
       label_font_point: 12
       # label_color: 0xDDDDDD
         # label_color 这个属性当前有 bug；

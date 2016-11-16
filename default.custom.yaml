@@ -1,4 +1,10 @@
 patch:
+  switcher:
+    caption: 〔方案选单〕
+    hotkeys:
+    - Control+grave
+  menu:
+    page_size: 5
   schema_list:
     - schema: double_pinyin_mspy
 
